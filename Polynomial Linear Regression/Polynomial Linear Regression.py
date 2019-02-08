@@ -2,7 +2,7 @@
 """
 Created on Fri Feb  8 20:31:27 2019
 
-@author: ACER
+@author: AKib
 """
 
 
@@ -22,28 +22,21 @@ from sklearn.linear_model import LinearRegression
 regressor=LinearRegression()
 
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg=PolynomialFeatures(degree=2)
+poly_reg=PolynomialFeatures(degree=5)
 x_poly=poly_reg.fit_transform(x_train);
 regressor.fit(x_poly,y_train)
 
-y_pred=regressor.predict(x_test)
+y_pred=regressor.predict(poly_reg.fit_transform(x_test))
 
 
 
 import matplotlib.pyplot as plt
-plt.scatter(x_train,y_train,color='red')
-plt.plot(x_train,regressor.predict(x_train),color='blue')
-plt.title('Salary Vs Exp Train')
-plt.xlabel('Salary')
-plt.ylabel('Exp')
-plt.show()
-
-
 plt.scatter(x_test,y_pred,color='red')
-plt.plot(x_test,regressor.predict(x_test),color='green')
-plt.title('Salary Vs Exp Test')
+plt.plot(x_test,y_pred,color='Green')
+plt.title('Salary Vs Experience (Test)')
 plt.xlabel('Salary')
-plt.ylabel('Exp')
+plt.ylabel('Experience')
 plt.show()
 
-#print(np.int(np.round(regressor.predict(50000))))
+
+
