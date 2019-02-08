@@ -15,5 +15,6 @@ print(x)
 print(y)
 from sklearn.preprocessing import Imputer
 imputer =Imputer(missing_values='NaN',strategy='mean',axis=0)
-imputer=imputer.fit(x[:,-1:])
-x[:,-1:]=imputer.transform(x[:,-1:])
+imputer=imputer.fit(x[:,[1,2]])
+x[:,[1,2]]=imputer.transform(x[:,[1,2]])
+print(x)
